@@ -41,17 +41,7 @@ You can also run the package directly to see the magic in action! 🌠
 python -m sane_rich_logging
 ```
 
-#### Output
-
-```bash
-11/22/24 11:38:00 DEBUG    [11/22/24 11:38:00] This is a debug message.
-                  INFO     [11/22/24 11:38:00] This is an info message.
-                  WARNING  [11/22/24 11:38:00] This is a warning message.
-                  ERROR    [11/22/24 11:38:00] This is an error message.
-                  CRITICAL [11/22/24 11:38:00] This is a critical message.
-
-You can see the log at /tmp/tmp2lkfop5k-rich.log
-```
+![Example Output](assets/example.png)
 
 The **console output** is visually pleasing, providing clear and colorful messages for each log level, while the **written log** is saved in a detailed format for easier debugging and tracking:
 
