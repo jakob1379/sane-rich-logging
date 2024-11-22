@@ -2,6 +2,8 @@
 
 Welcome to **Sane Rich Logging**! ✨ A beautiful logging package that makes setting up robust and pretty logging in Python a breeze! With rich console output and flexible file handling, your logs will shine brighter than ever! ✨🔮
 
+![Example Output](https://github.com/jakob1379/sane-rich-logging/blob/main/assets/example.png){ style="display: block; margin: 0 auto" }
+
 ## 🎉 Features
 
 - **Rich Logging Console Output** 🌈: Make your logs delightful with colorful, informative formatting.
@@ -56,7 +58,7 @@ You can also run the package directly to see the magic in action! 🌠
 python -m sane_rich_logging
 ```
 
-![Example Output](assets/example.png)
+ ![Example Output](assets/example.png)
 
 The **console output** is visually pleasing, providing clear and colorful messages for each log level, while the **written log** is saved in a detailed format for easier debugging and tracking:
 
