@@ -18,7 +18,6 @@ poetry install sane-rich-logging
 uv add sane-rich-logging
 ```
 
-
 ## 💡 Usage
 
 With **Sane Rich Logging**, setting up logging is easy-peasy! 🍋 Here is how to use it:
@@ -31,7 +30,23 @@ Just import the package and call `setup_logging()` to configure your logger:
 from sane_rich_logging import setup_logging
 
 setup_logging()
+
+logging.debug("Use me like normally")
 ```
+
+### Sane Defaults for the Root Logger
+
+This package provides a **sane default setup for the root logger**, which will propagate to other loggers that inherit from it. The usage of logging remains unchanged: simply use the **standard Python logging library** functions (`logging.debug()`, `logging.info()`, etc.). With **Sane Rich Logging**, you get a better experience with minimal effort—just set up the logger once, and enjoy consistent, clean logging throughout your application.
+
+### Configuration Options
+
+`setup_logging()` can be customized with arguments or environment variables:
+
+- **`log_file`** (`str | None`): The file path to store log outputs. You can provide it as an argument, or set the `LOG_FILE` environment variable. Defaults to `'application.log'` if none is provided.
+- **`log_level`** (`Literal['DEBUG', 'INFO', 'WARNING', 'ERROR', 'CRITICAL'] | None`): The log level for both console and file handlers. You can provide it as an argument, or set the `LOG_LEVEL` environment variable. Defaults to `'DEBUG'`.
+- **`log_max_size`** (`int | None`): The maximum size of the log file before rotation. You can provide it as an argument, or set the `LOG_MAX_SIZE` environment variable. Defaults to `5 MB`.
+
+This flexibility makes it easy to adapt the logging setup to different environments, such as development, testing, or production.
 
 ### Running the Example
 
