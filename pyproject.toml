@@ -12,7 +12,7 @@ dependencies = [
 ]
 
 [tool.uv]
-package-dir = "src"
+package = true
 
 [tool.commitizen]
 name = "cz_conventional_commits"
@@ -21,6 +21,7 @@ version_scheme = "pep440"
 version_provider = "pep621"
 update_changelog_on_bump = true
 major_version_zero = true
+
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
