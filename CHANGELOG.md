@@ -1,3 +1,9 @@
+## Unreleased
+
+### Fix
+
+- **README.md**: updated descriptions and some phrasing for clarity
+
 ## 1.0.0 (2024-11-22)
 
 ### Fix
