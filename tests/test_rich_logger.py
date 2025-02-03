@@ -1,6 +1,8 @@
-import os
-import pytest
 import logging
+import os
+
+import pytest
+
 from src.sane_rich_logging import setup_logging
 
 # Define a temporary log file for testing

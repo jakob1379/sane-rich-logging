@@ -1,7 +1,9 @@
-from sane_rich_logging import setup_logging
 import logging
 import tempfile
+
 from rich import print
+
+from sane_rich_logging import setup_logging
 
 if __name__ == "__main__":
     # Test the logging configuration

@@ -1,15 +1,15 @@
 import logging
 import os
 from logging.handlers import RotatingFileHandler
-from typing import Literal
+from typing import Literal, Optional
 
 from rich.logging import RichHandler
 
 
 def setup_logging(
-    log_file: str | None = None,
-    log_level: Literal["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"] | None = None,
-    log_max_size: int | None = None,
+    log_file: Optional[str] | None = None,
+    log_level: Optional[Literal["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"]] = None,
+    log_max_size: Optional[int] | None = None,
 ) -> None:
     """
     Configures logging for console and file outputs with different handlers and formats.
