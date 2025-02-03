@@ -5,10 +5,12 @@ from typing import Literal, Optional
 
 from rich.logging import RichHandler
 
+_log_level_options = Literal["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"]
+
 
 def setup_logging(
-    log_file: Optional[str] | None = None,
-    log_level: Optional[Literal["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"]] = None,
+    log_file: str | None = None,
+    log_level: Optional[_log_level_options] = None,
     log_max_size: Optional[int] | None = None,
 ) -> None:
     """
@@ -23,6 +25,7 @@ def setup_logging(
         log_max_size (int | None): Maximum size of the log file before it gets rotated.
             Only used if log_file is provided. Defaults to environment variable LOG_MAX_SIZE or 5MB.
     """
+
     # Determine log configuration from arguments or environment variables
     log_level = log_level or os.environ.get("LOG_LEVEL", "DEBUG").upper()
     log_level_numeric = getattr(logging, log_level, logging.DEBUG)
