@@ -1,3 +1,9 @@
+## 1.0.2 (2025-02-03)
+
+### Fix
+
+- **_logger.py**: fixed some typing issues
+
 ## 1.0.1 (2024-11-28)
 
 ### Fix
