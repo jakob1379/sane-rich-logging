@@ -6,7 +6,7 @@ readme = "README.md"
 authors = [
     { name = "Jakob Guldberg Aaes", email = "jakob1379@gmail.com" }
 ]
-requires-python = ">=3.12"
+requires-python = ">=3.10"
 dependencies = [
     "rich>=13.9.4",
 ]
@@ -25,9 +25,34 @@ update_changelog_on_bump = true
 requires = ["hatchling"]
 build-backend = "hatchling.build"
 
+[tool.hatch.build]
+include = ["src/sane_rich_logging/py.typed"]
+
+
 [dependency-groups]
 dev = [
     "commitizen>=3.31.0",
+    "pre-commit>=4.1.0",
     "pytest>=8.3.3",
     "ruff>=0.7.4",
+    "tox>=4.24.1",
+    "tox-uv>=1.20.2",
 ]
+
+[tool.mypy]
+namespace_packages = true
+explicit_package_bases = true
+
+[tool.ruff]
+# Specify the directories to check
+include = ["pyproject.toml", "src/**/*.py", "tests/**/*.py"] # must match files
+
+line-length = 100
+
+extend-exclude = ["__pycache__", ".venv"]  # Exclude certain directories
+
+[tool.ruff.lint]
+# Enable Pyflakes (`F`) and a subset of the pycodestyle (`E`)  codes by default.
+# Unlike Flake8, Ruff doesn't enable pycodestyle warnings (`W`) or
+# McCabe complexity (`C901`) by default.
+select = ["E", "F", "W", "I"]

@@ -15,15 +15,15 @@ def setup_logging(
     Configures logging for console and file outputs with different handlers and formats.
 
     Args:
-        log_file (str | None): The file path to store log outputs. Defaults to environment variable LOG_FILE or "application.log".
-        log_level (Literal["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"] | None): The log level for both console and file handlers.
-            Defaults to environment variable LOG_LEVEL or "DEBUG".
+        log_file (str | None): The file path to store log outputs. If provided, enables file
+            logging at the specified path. Defaults to None (no file logging).
+        log_level (Literal["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"] | None): The log level
+            for both console and file handlers. Defaults to environment variable LOG_LEVEL or
+            "DEBUG".
         log_max_size (int | None): Maximum size of the log file before it gets rotated.
-            Defaults to environment variable LOG_MAX_SIZE or 5 MB.
+            Only used if log_file is provided. Defaults to environment variable LOG_MAX_SIZE or 5MB.
     """
     # Determine log configuration from arguments or environment variables
-    log_file = log_file or os.environ.get("LOG_FILE", "application.log")
-    log_max_size = log_max_size or int(os.environ.get("LOG_MAX_SIZE", 5 * 1024 * 1024))
     log_level = log_level or os.environ.get("LOG_LEVEL", "DEBUG").upper()
     log_level_numeric = getattr(logging, log_level, logging.DEBUG)
 
@@ -39,11 +39,15 @@ def setup_logging(
     )
     logger.addHandler(console_handler)
 
-    # File handler with rotation
-    file_formatter = logging.Formatter(
-        "%(asctime)s [%(levelname)s] [%(filename)s:%(lineno)d] - %(message)s"
-    )
-    file_handler = RotatingFileHandler(log_file, maxBytes=log_max_size, backupCount=5)
-    file_handler.setLevel(log_level_numeric)
-    file_handler.setFormatter(file_formatter)
-    logger.addHandler(file_handler)
+    if log_file is not None:
+        # Only configure file logging if log_file is provided
+        log_max_size = log_max_size or int(os.environ.get("LOG_MAX_SIZE", 5 * 1024 * 1024))
+
+        # File handler with rotation
+        file_formatter = logging.Formatter(
+            "%(asctime)s [%(levelname)s] [%(filename)s:%(lineno)d] - %(message)s"
+        )
+        file_handler = RotatingFileHandler(log_file, maxBytes=log_max_size, backupCount=5)
+        file_handler.setLevel(log_level_numeric)
+        file_handler.setFormatter(file_formatter)
+        logger.addHandler(file_handler)

@@ -1,0 +1,38 @@
+# tox.toml
+
+requires = ["tox>=4", "tox-uv>=0.1.0"]
+env_list = ["type", "3.10", "3.11", "3.12", "3.13"]
+
+[env_run_base]
+description = "Run unit tests"
+deps = [
+    "pytest>=8",
+    "rich"
+]
+commands = [["pytest", { replace = "posargs", default = ["tests"], extend = true }]]
+
+[env.type]
+description = "Run type checks"
+deps = ["mypy"]
+commands = [["mypy", "--namespace-packages", "--explicit-package-bases", { replace = "posargs", default = ["src", "tests"], extend = true }]]
+
+# Define Python versions for testing
+[env.3.10]
+basepython = ["python3.10"]
+extends = "env_run_base"
+use_uv_python = true
+
+[env.3.11]
+basepython = ["python3.11"]
+extends = "env_run_base"
+use_uv_python = true
+
+[env.3.12]
+basepython = ["python3.12"]
+extends = "env_run_base"
+use_uv_python = true
+
+[env.3.13]
+basepython = ["python3.13"]
+extends = "env_run_base"
+use_uv_python = true
