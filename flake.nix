@@ -10,9 +10,7 @@
       devShell = pkgs.mkShell {
 
         buildInputs = with pkgs; [
-          gitleaks
           uv
-          pre-commit
         ];
       };
     }
