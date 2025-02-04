@@ -3,7 +3,7 @@ import os
 
 import pytest
 
-from src.sane_rich_logging import setup_logging
+from sane_rich_logging import setup_logging
 
 # Define a temporary log file for testing
 LOG_FILE = "test_log.log"
