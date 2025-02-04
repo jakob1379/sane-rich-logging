@@ -1,3 +1,9 @@
+## 1.0.3 (2025-02-04)
+
+### Fix
+
+- **build**: fixed build of project did not including all source files
+
 ## 1.0.2 (2025-02-03)
 
 ### Fix
