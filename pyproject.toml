@@ -31,10 +31,6 @@ update_changelog_on_bump = true
 requires = ["hatchling"]
 build-backend = "hatchling.build"
 
-[tool.hatch.build]
-include = ["src/sane_rich_logging/py.typed"]
-
-
 [dependency-groups]
 dev = [
     "commitizen>=3.31.0",
